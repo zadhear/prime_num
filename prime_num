@@ -1,0 +1,24 @@
+import math
+
+# Function to check if a number is prime
+def is_prime(num):
+    if num < 2:  # Numbers less than 2 are not prime
+        return False
+    for i in range(2, int(math.sqrt(num)) + 1):  # Check divisibility from 2 to sqrt(num)
+        if num % i == 0:  # If a divisor is found, it's not prime
+            return False
+    return True
+
+primes = []  # List to store the prime numbers
+
+# Iterate over numbers from 1 to 250
+for num in range(1, 251):
+    if is_prime(num):  # Check if the number is prime
+        primes.append(num)  # Add the prime number to the list
+
+# Open a file named 'results.txt' in write mode
+with open('results.txt', 'w') as file:
+    for prime in primes:  # Iterate over the prime numbers
+        file.write(str(prime) + '\n')  # Write each prime number to a new line in the file
+
+print("Prime numbers between 1 and 250 have been saved to 'results.txt' file.")
